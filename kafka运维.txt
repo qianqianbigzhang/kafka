@@ -1,0 +1,19 @@
+topic 分区扩容
+/data/kafka/kafka_2.11-0.10.1.0/bin/kafka-topics.sh --zookeeper 192.168.221.244:2181,192.168.221.248:2181,192.168.221.255:2181,192.168.222.20:2181,192.168.222.21:2181/chroot/path  -alter --partitions 30 --topic zhuappios
+说明：扩容后，之前存在于broker的数据不会重新分布；
+
+查看消费组：
+/data/kafka/kafka_2.11-0.10.1.0/bin/kafka-consumer-groups.sh kafka.admin.ConsumerGroupCommand --describe --bootstrap-server 192.168.219.208:9095,192.168.219.209:9095,192.168.219.215:9095,192.168.219.216:9095,192.168.219.222:9095 --group zhuappios-group
+
+查看topic
+sh /data/kafka/kafka_2.11-0.10.1.0/bin/kafka-topics.sh --describe --zookeeper 192.168.221.244:2181,192.168.221.248:2181,192.168.221.255:2181,192.168.222.20:2181,192.168.222.21:2181/chroot/path --topic zhuappios
+
+
+8、查看当前group offset的状况
+/data/kafka/kafka_2.11-0.10.1.0/bin/kafka-consumer-groups.sh kafka.admin.ConsumerGroupCommand --describe --bootstrap-server 192.168.219.208:9095,192.168.219.209:9095,192.168.219.215:9095,192.168.219.216:9095,192.168.219.222:9095 --group zhuappios-group
+
+
+
+
+
+
